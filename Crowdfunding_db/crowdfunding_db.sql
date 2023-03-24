@@ -1,8 +1,8 @@
 -- Drop Tables if already exist in the database
 DROP TABLE IF EXISTS Campaign;
+DROP TABLE IF EXISTS Contacts;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Subcategory;
-DROP TABLE IF EXISTS Contacts;
 
 	
 -- Create all tables
@@ -39,8 +39,8 @@ CREATE TABLE Campaign(
 	FOREIGN KEY (contact_id) REFERENCES Contacts(contact_id),
 	company_name VARCHAR(100) NOT NULL,
 	description VARCHAR(100) NOT NULL,
-	goal INTEGER NOT NULL,
-	pledged INTEGER NOT NULL,
+	goal NUMERIC NOT NULL,
+	pledged NUMERIC NOT NULL,
 	outcome VARCHAR(20) NOT NULL,
 	backers_count INTEGER NOT NULL,
 	country VARCHAR(10) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE Campaign(
 	category_id VARCHAR(10) NOT NULL,
 	FOREIGN KEY (category_id) REFERENCES Category(category_id),
 	subcategory_id VARCHAR(10) NOT NULL,
-	FOREIGN KEY (subcategory_id) REFERENCES Subategory(subcategory_id),
+	FOREIGN KEY (subcategory_id) REFERENCES Subcategory(subcategory_id),
 	UNIQUE (cf_id),
 	PRIMARY KEY (cf_id)
 );
